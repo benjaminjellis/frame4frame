@@ -1,3 +1,7 @@
+"""
+Module used to sort inputs from direcotry into human sort
+"""
+
 import re
 
 
@@ -15,7 +19,7 @@ def alphanum_key(s):
     return [ tryint(c) for c in re.split('([0-9]+)', s) ]
 
 
-def sort_nicely(l):
+def humanSort(l):
     """ Sort the given list in the way that humans expect.
     """
     l.sort(key=alphanum_key)
