@@ -4,17 +4,17 @@ Function to convert frames into a format that can displayed on a inky eWhat disp
 from PIL import Image
 from core.getFrames import getFrames
 
-def convert(images_out):
-    frames = getFrames(images_out)
+def convert(output_dir):
+    frames = getFrames(output_dir)
     for frame in frames:
         frame_out = frame.replace(".jpg", ".png")
-        im = Image.open("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(images_out) + "/raw/" + str(
+        im = Image.open("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(output_dir) + "/raw/" + str(
             frame))
         im = im.resize((400,300), Image.ANTIALIAS)
         pal_img = Image.new("P", (1, 1))
         pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
         im = im.convert("RGB").quantize(palette = pal_img)
-        im.save("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(images_out) + "/processed/" + str(
+        im.save("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(output_dir) + "/processed/" + str(
             frame_out))
 
         """

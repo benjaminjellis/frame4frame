@@ -6,19 +6,19 @@ import cv2
 import os
 
 
-def frameCapture(video, images_out):
+def frameCapture(video, output_dir):
 
     if not os.path.exists("frames"):
         os.mkdir("frames")
 
-    if not os.path.exists("frames/" + images_out):
-        os.mkdir("frames/" + images_out)
+    if not os.path.exists("frames/" + output_dir):
+        os.mkdir("frames/" + output_dir)
 
-    if not os.path.exists("frames/" + images_out + "/raw"):
-        os.mkdir("frames/" + images_out + "/raw")
+    if not os.path.exists("frames/" + output_dir + "/raw"):
+        os.mkdir("frames/" + output_dir + "/raw")
 
-    if not os.path.exists("frames/" + images_out + "/processed"):
-        os.mkdir("frames/" + images_out + "/processed")
+    if not os.path.exists("frames/" + output_dir + "/processed"):
+        os.mkdir("frames/" + output_dir + "/processed")
 
     vidcap = cv2.VideoCapture("videos/"+video)
     count = 0
@@ -28,7 +28,7 @@ def frameCapture(video, images_out):
     while success:
         success, image = vidcap.read()
         if count % (5 * fps) == 0:
-            filename = "frames/" + images_out + "/raw" + "/image_" + str(int(im_no)) + ".jpg"
+            filename = "frames/" + output_dir + "/raw" + "/image_" + str(int(im_no)) + ".jpg"
             cv2.imwrite(filename, image)
             im_no += 1
         count += 1

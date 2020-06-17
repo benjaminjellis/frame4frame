@@ -6,9 +6,9 @@ from os.path import isfile, join
 from core.humanSort import humanSort
 
 
-def getFrames(images_out):
-    frames = [f for f in listdir("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(images_out) + "/raw/") if
-              isfile(join("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(images_out) + "/raw/", f))]
+def getFrames(output_dir):
+    frames = [f for f in listdir("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(output_dir) + "/raw/") if
+              isfile(join("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(output_dir) + "/raw/", f))]
     humanSort(frames)
     #remvove this, it's not a frame
     if ".DS_Store" in frames:

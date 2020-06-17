@@ -1,15 +1,26 @@
 """
-Script that will display frames from a given video on the inky wHat e ink display
+Script that will display frames on the inky wHat e ink display
 """
+
 from PIL import Image
 from core.getFrames import getFrames
-import inky
+import time
+from inky import InkyWHAT
+
+#set up the display
+inky_display = InkyWHAT("red")
+inky_display.set_border(inky_display.WHITE)
 
 #get the frames
-images_out = "sopr"
-frames = getFrames(images_out =images_out )
+film_to_show = "sopr"
+frames = getFrames(film_to_show)
+
+#loop through the frames in the dir
 for frame in frames:
-    im = Image.open("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(images_out) + "/raw/" + str(
+    #open a frame
+    im = Image.open("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(film_to_show) + "/raw/" + str(
             frame))
-    inky_display.set_image(img)
+    #push the frame to the display
+    inky_display.set_image(im)
     inky_display.show()
+    time.sleep(5*60) #sleep for 5 mins
