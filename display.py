@@ -22,9 +22,8 @@ while y:
     #loop through the frames in the dir
     for frame in frames:
         #open a frame
-        im = Image.open("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(film_to_show) + "/raw/" + str(
-                frame))
+        im = Image.open("~/frame4frame/" + str(film_to_show) + "/" + str(frame))
         #push the frame to the display
         inky_display.set_image(im)
         inky_display.show()
-        time.sleep(5*60) #sleep for 5 mins
+        time.sleep(2) #sleep for 5 mins
