@@ -16,7 +16,7 @@ inky_display = InkyWHAT("red")
 inky_display.set_border(inky_display.WHITE)
 
 #get the frames
-frames = getFrames(path + "/" + film_to_show)
+frames = getFrames(str(path) + "/" + film_to_show)
 
 y = True
 
@@ -24,7 +24,7 @@ y = True
 while y:
     for frame in frames:
 
-        im = Image.open(path + str(film_to_show) + "/" + str(frame))
+        im = Image.open(str(path) + str(film_to_show) + "/" + str(frame))
         inky_display.set_image(im)
         inky_display.show()
         time.sleep(2)  #sleep for 5 mins
