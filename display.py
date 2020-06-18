@@ -6,24 +6,25 @@ from PIL import Image
 from core.getFrames import getFrames
 import time
 from inky import InkyWHAT
+import pathlib
 
 film_to_show = "beemov"
+path = pathlib.Path().absolute()
 
 #set up the display
 inky_display = InkyWHAT("red")
 inky_display.set_border(inky_display.WHITE)
 
 #get the frames
-frames = getFrames(film_to_show)
+frames = getFrames(path + "/" + film_to_show)
 
 y = True
 
+
 while y:
-    #loop through the frames in the dir
     for frame in frames:
-        #open a frame
-        im = Image.open("~/frame4frame/" + str(film_to_show) + "/" + str(frame))
-        #push the frame to the display
+
+        im = Image.open(path + str(film_to_show) + "/" + str(frame))
         inky_display.set_image(im)
         inky_display.show()
-        time.sleep(2) #sleep for 5 mins
+        time.sleep(2)  #sleep for 5 mins
