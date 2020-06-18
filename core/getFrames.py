@@ -7,8 +7,8 @@ from core.naturalSort import naturalSort
 
 
 def getFrames(output_dir):
-    frames = [f for f in listdir("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(output_dir) + "/raw/") if
-              isfile(join("/Users/BEN/PycharmProjects/frame4frame/frames/" + str(output_dir) + "/raw/", f))]
+    frames = [f for f in listdir("~/frame4frame/" + str(output_dir) + "/") if
+              isfile(join("~/frame4frame/" + str(output_dir)+ "/", f))]
     naturalSort(frames)
     #remvove this, it's not a frame
     if ".DS_Store" in frames:
