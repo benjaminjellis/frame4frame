@@ -6,7 +6,7 @@ import cv2
 import os
 
 
-def frameCapture(video, output_dir):
+def framecapture(video, output_dir):
 
     if not os.path.exists("frames"):
         os.mkdir("frames")
@@ -20,7 +20,7 @@ def frameCapture(video, output_dir):
     if not os.path.exists("frames/" + output_dir + "/processed"):
         os.mkdir("frames/" + output_dir + "/processed")
 
-    vidcap = cv2.VideoCapture("videos/"+video)
+    vidcap = cv2.VideoCapture("/Users/benjamin/Movies/"+video)
     count = 0
     success = True
     fps = int(vidcap.get(cv2.CAP_PROP_FPS))

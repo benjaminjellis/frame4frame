@@ -2,7 +2,7 @@
 Function to convert frames into a format that can displayed on a inky eWhat display
 """
 from PIL import Image
-from core.getFrames import getFrames
+from core.getframes import getframes
 import pathlib
 
 
@@ -11,11 +11,15 @@ def convert(output_dir):
     raw_loc = str(path) + "/frames/" + output_dir + "/raw/"
 
     processed_loc = str(path) + "/frames/" + output_dir + "/processed/"
-    frames = getFrames(raw_loc)
+    frames = getframes(raw_loc)
 
     for frame in frames:
+        # specify outputs as .png
         frame_out = frame.replace(".jpg", ".png")
+        # open a frame
         im = Image.open(str(raw_loc) + str(frame))
+
+        # resize it
         w, h = im.size
         h_new = 300
         w_new = int((float(w) / h) * h_new)
@@ -26,9 +30,11 @@ def convert(output_dir):
         y0 = 0
         y1 = h_new
         im = im.crop((x0, y0, x1, y1))
+        # map the frame / dither it
         pal_img = Image.new("P", (1, 1))
         pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
         im = im.convert("RGB").quantize(palette = pal_img)
+        # save cropped and dithered frame
         im.save(str(processed_loc) + str(frame_out))
 
         """

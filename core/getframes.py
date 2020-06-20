@@ -7,7 +7,7 @@ from core.naturalSort import naturalSort
 import pathlib
 
 
-def getFrames(directory):
+def getframes(directory):
     frames = [f for f in listdir(directory) if isfile(join(directory, f))]
     naturalSort(frames)
     #remvove this, it's not a frame
